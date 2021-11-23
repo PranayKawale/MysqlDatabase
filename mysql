@@ -24,3 +24,19 @@ mysql> create table employee_payroll(id int not null auto_increment, name varcha
 Query OK, 0 rows affected (2.87 sec)
 
 mysql>
+mysql>  select * from employee_payroll;
+Empty set (0.00 sec)
+
+mysql> insert into employee_payroll(name, salary, start_date)values ("abc",123,"1-1-20");
+Query OK, 1 row affected (0.16 sec)
+
+mysql>  select * from employee_payroll;
++----+------+--------+------------+
+| id | name | salary | start_date |
++----+------+--------+------------+
+|  1 | abc  |    123 | 1-1-20     |
++----+------+--------+------------+
+1 row in set (0.03 sec)
+
+mysql>
+
