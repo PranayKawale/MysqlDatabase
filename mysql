@@ -1,4 +1,4 @@
-//mysql problem
+
 mysql> create database payroll_service;
 Query OK, 1 row affected (0.82 sec)
 
@@ -18,4 +18,9 @@ mysql> show databases;
 
 mysql> use payroll_service;
 Database changed
+
+
+mysql> create table employee_payroll(id int not null auto_increment, name varchar(50), salary int, start_date varchar(50), primary key(id));
+Query OK, 0 rows affected (2.87 sec)
+
 mysql>
