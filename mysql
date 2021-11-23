@@ -23,7 +23,7 @@ Database changed
 mysql> create table employee_payroll(id int not null auto_increment, name varchar(50), salary int, start_date varchar(50), primary key(id));
 Query OK, 0 rows affected (2.87 sec)
 
-mysql>
+
 mysql>  select * from employee_payroll;
 Empty set (0.00 sec)
 
@@ -46,5 +46,73 @@ mysql>  select * from employee_payroll;
 +----+------+--------+------------+
 1 row in set (0.00 sec)
 
-mysql>
+mysql>ysql>  select * from employee_payroll;
++----+------+--------+------------+
+| id | name | salary | start_date |
++----+------+--------+------------+
+|  1 | abc  |    123 | 1-1-20     |
++----+------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee_payroll(name, salary, start_date)values ("xyz",123,"1-1-21");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into employee_payroll(name, salary, start_date)values ("lmn",456,"1-1-21");
+Query OK, 1 row affected (0.07 sec)
+
+mysql>  select * from employee_payroll;
++----+------+--------+------------+
+| id | name | salary | start_date |
++----+------+--------+------------+
+|  1 | abc  |    123 | 1-1-20     |
+|  2 | xyz  |    123 | 1-1-21     |
+|  3 | lmn  |    456 | 1-1-21     |
++----+------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select name, salary from employee_payroll where name = "xyz" ;
++------+--------+
+| name | salary |
++------+--------+
+| xyz  |    123 |
++------+--------+
+1 row in set (0.07 sec)
+
+mysql> select CAST("1-1-20" AS DATE);
++------------------------+
+| CAST("1-1-20" AS DATE) |
++------------------------+
+| 0001-01-20             |
++------------------------+
+1 row in set (0.04 sec)
+
+mysql> select CAST("1-1-21" AS DATE);
++------------------------+
+| CAST("1-1-21" AS DATE) |
++------------------------+
+| 0001-01-21             |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into employee_payroll(name, salary, start_date)values ("lmn",456,"1-1-23");
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select CAST("1-1-23" AS DATE);
++------------------------+
+| CAST("1-1-23" AS DATE) |
++------------------------+
+| 0001-01-23             |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select name, salary,start_date FROM employee_payroll WHERE start_date BETWEEN CAST('0001-01-20' AS DATETIME)AND CAST('0001-01-21' AS DATETIME);
++------+--------+------------+
+| name | salary | start_date |
++------+--------+------------+
+| abc  |    123 | 1-1-20     |
+| xyz  |    123 | 1-1-21     |
+| lmn  |    456 | 1-1-21     |
++------+--------+------------+
+3 rows in set (0.05 sec)
+
 
